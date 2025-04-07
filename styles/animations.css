@@ -5,32 +5,61 @@
 }
 
 [data-aos="fade-up"] {
-    transform: translateY(50px);
+    transform: translateY(30px);
 }
 
 [data-aos="fade-down"] {
-    transform: translateY(-50px);
+    transform: translateY(-30px);
 }
 
 [data-aos="fade-left"] {
-    transform: translateX(50px);
+    transform: translateX(30px);
 }
 
 [data-aos="fade-right"] {
-    transform: translateX(-50px);
+    transform: translateX(-30px);
 }
 
 [data-aos="zoom-in"] {
-    transform: scale(0.8);
+    transform: scale(0.9);
 }
 
 [data-aos="zoom-out"] {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 [data-aos].aos-animate {
     opacity: 1;
     transform: translateY(0) translateX(0) scale(1);
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    [data-aos] {
+        transition: none !important;
+        transform: none !important;
+    }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    [data-aos="fade-up"],
+    [data-aos="fade-down"] {
+        transform: translateY(20px);
+    }
+    
+    [data-aos="fade-left"],
+    [data-aos="fade-right"] {
+        transform: translateX(20px);
+    }
+    
+    [data-aos="zoom-in"] {
+        transform: scale(0.95);
+    }
+    
+    [data-aos="zoom-out"] {
+        transform: scale(1.05);
+    }
 }
 
 /* Typed Text Animation */
@@ -64,7 +93,7 @@
 
 /* Chart Animations */
 .chart-animate {
-    animation: chartGrow 1.5s ease-out;
+    animation: chartGrow 1s ease-out;
 }
 
 @keyframes chartGrow {
@@ -72,6 +101,21 @@
         transform: scaleY(0);
     }
     100% {
+        transform: scaleY(1);
+    }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .chart-animate {
+        animation-duration: 0.7s;
+    }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .chart-animate {
+        animation: none;
         transform: scaleY(1);
     }
 }

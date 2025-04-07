@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Portfolio of George K., Automation & AI Expert specializing in business process automation, chatbot development, and AI solutions">
+    <meta name="theme-color" content="#0a0a15">
+    <title>Automation & AI Expert Portfolio</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- EmailJS for contact form -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init('YOUR_USER_ID');
+        })();
+    </script>
+    <!-- Ensure animations work smoothly on mobile devices -->
+    <script>
+        document.addEventListener('touchstart', function() {}, {passive: true});
+    </script>
+</head>
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+                    <defs>
+                        <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#7B2CBF" />
+                            <stop offset="100%" stop-color="#3A86FF" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="20" cy="20" r="18" fill="none" stroke="url(#logo-gradient)" stroke-width="2.5"/>
+                    <path d="M13,28 L28,12" stroke="url(#logo-gradient)" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M13,12 L28,28" stroke="url(#logo-gradient)" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="20" cy="20" r="5" fill="url(#logo-gradient)"/>
+                </svg>
+                <span>George K.</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="particles-container" id="particles-js"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Automation & AI <span class="gradient-text">Expert</span></h1>
+            <div class="type-container">
+                <span id="type-text"></span><span class="cursor">&nbsp;</span>
+            </div>
+            <p class="hero-subtitle">Transforming businesses through intelligent automation and AI-driven solutions</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn primary-btn">View Projects</a>
+                <a href="#contact" class="btn secondary-btn">Contact Me</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div>
+                <span class="scroll-arrows">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section id="partners" class="partners">
+        <div class="container">
+            <div class="section-header">
+                <h2>Trusted <span class="gradient-text">Partners</span></h2>
+                <p>Collaborating with industry leaders in technology and innovation</p>
+            </div>
+            <div class="partners-scroll-container">
+                <div class="partners-track">
+                    <!-- First set of partners (will be duplicated by animation) -->
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <p>Google</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <p>Anthropic</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fab fa-brave"></i>
+                        </div>
+                        <p>Brave</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <p>n8n</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fab fa-facebook"></i>
+                        </div>
+                        <p>Facebook</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <p>OpenAI</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fab fa-microsoft"></i>
+                        </div>
+                        <p>Microsoft</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <p>OpenRouter</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <p>DeepSeek</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <p>Llangchain</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <p>DataSEO</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <p>RapidAPI</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                        <p>X</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <p>Make.com</p>
+                    </div>
+                    
+                    <!-- Duplicate set for seamless scrolling -->
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <p>Google</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <p>Anthropic</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fab fa-brave"></i>
+                        </div>
+                        <p>Brave</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <p>n8n</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fab fa-facebook"></i>
+                        </div>
+                        <p>Facebook</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <p>OpenAI</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fab fa-microsoft"></i>
+                        </div>
+                        <p>Microsoft</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <p>OpenRouter</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <p>DeepSeek</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <p>Llangchain</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <p>DataSEO</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <p>RapidAPI</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                        <p>X</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <p>Make.com</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fab fa-brave"></i>
+                        </div>
+                        <p>Brave</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <p>n8n</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fab fa-facebook"></i>
+                        </div>
+                        <p>Facebook</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <p>OpenAI</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fab fa-microsoft"></i>
+                        </div>
+                        <p>Microsoft</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <p>OpenRouter</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <p>DeepSeek</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <p>Llangchain</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <p>DataSEO</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <p>RapidAPI</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                        <p>X</p>
+                    </div>
+                    <div class="partner-item">
+                        <div class="partner-logo">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <p>Make.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>My <span class="gradient-text">Expertise</span></h2>
+                <p>Specialized skills in cutting-edge technologies and methodologies</p>
+            </div>
+            <div class="skills-container">
+                <div class="skill-card" data-aos="fade-up">
+                    <div class="skill-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Automation</h3>
+                    <p>Creating efficient systems that eliminate manual processes and improve productivity</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 95%;"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="skill-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Web Design</h3>
+                    <p>Building responsive, user-friendly websites with modern frameworks and technologies</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="skill-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3>API Integration</h3>
+                    <p>Seamlessly connecting systems and services for enhanced functionality and data flow</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 92%;"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="skill-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Data Insights</h3>
+                    <p>Transforming raw data into actionable insights and visualizations</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 88%;"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="skill-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Chatbot Development</h3>
+                    <p>Creating intelligent conversational interfaces with memory and learning capabilities</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 94%;"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="skill-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AGI Development</h3>
+                    <p>Working with advanced AI systems to create adaptable, intelligent solutions</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 86%;"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="skill-icon">
+                        <i class="fas fa-search-location"></i>
+                    </div>
+                    <h3>GEO Optimization</h3>
+                    <p>Mastering Google's latest engine optimization algorithm to boost visibility and search rankings</p>
+                    <div class="skill-level">
+                        <div class="skill-progress" style="width: 93%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured <span class="gradient-text">Projects</span></h2>
+                <p>Innovative solutions delivering real-world impact</p>
+            </div>
+            <div class="projects-container">
+                <!-- AI Content Generation Application -->
+                <div class="project-card" data-aos="fade-up">
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span>AI</span>
+                            <span>Content Generation</span>
+                            <span>Optimization</span>
+                        </div>
+                        <h3>AI Content Generation Application</h3>
+                        <p>Developed a custom content generation and optimization application that leverages advanced AI systems to create tailored, high-performing social media content.</p>
+                        <div class="project-highlights">
+                            <div class="highlight">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Multi-platform optimization</span>
+                            </div>
+                            <div class="highlight">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Engagement analytics</span>
+                            </div>
+                            <div class="highlight">
+                                <i class="fas fa-rocket"></i>
+                                <span>Performance tracking</span>
+                            </div>
+                        </div>
+                        <button class="btn view-details-btn" data-project="content-gen">View Details</button>
+                    </div>
+                    <div class="project-image">
+                        <div class="image-container">
+                            <div class="code-snippet">
+                                <pre><code>// AI Content Generator
+class ContentGenerator {
+  constructor(model, platform) {
+    this.model = model;
+    this.platform = platform;
+  }
+                                    
+  async generateOptimizedContent(topic, tone) {
+    const content = await this.model.generate({
+      prompt: `Create ${platform} content about ${topic} with ${tone} tone`,
+      maxTokens: 250,
+      temperature: 0.7
+    });
+                                    
+    return this.optimize(content, this.platform);
+  }
+                                    
+  optimize(content, platform) {
+    // Platform-specific optimization
+    // ...
+  }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lead Generation Tool -->
+                <div class="project-card reverse" data-aos="fade-up">
+                    <div class="project-image">
+                        <div class="stats-container">
+                            <div class="stat">
+                                <h4>Lead Conversion Rate</h4>
+                                <div class="chart-container">
+                                    <canvas id="conversionChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span>Lead Generation</span>
+                            <span>CRM</span>
+                            <span>Sales Automation</span>
+                        </div>
+                        <h3>Intelligent Lead Generation System</h3>
+                        <p>Created a sophisticated lead generation tool that helps businesses capture and qualify potential leads, converting them into successful customers through intelligent nurturing sequences.</p>
+                        <div class="project-highlights">
+                            <div class="highlight">
+                                <i class="fas fa-filter"></i>
+                                <span>Automated qualification</span>
+                            </div>
+                            <div class="highlight">
+                                <i class="fas fa-user-check"></i>
+                                <span>Personalized nurturing</span>
+                            </div>
+                            <div class="highlight">
+                                <i class="fas fa-exchange-alt"></i>
+                                <span>CRM integration</span>
+                            </div>
+                        </div>
+                        <button class="btn view-details-btn" data-project="lead-gen">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Personalized Chatbots -->
+                <div class="project-card" data-aos="fade-up">
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span>AI</span>
+                            <span>Chatbots</span>
+                            <span>Machine Learning</span>
+                        </div>
+                        <h3>Self-Learning Personalized Chatbots</h3>
+                        <p>Developed custom chatbots with long-term memory and self-learning capabilities that adapt and improve through user interactions, providing increasingly personalized support.</p>
+                        <div class="project-highlights">
+                            <div class="highlight">
+                                <i class="fas fa-brain"></i>
+                                <span>Contextual memory</span>
+                            </div>
+                            <div class="highlight">
+                                <i class="fas fa-cogs"></i>
+                                <span>Self-improvement algorithms</span>
+                            </div>
+                            <div class="highlight">
+                                <i class="fas fa-users"></i>
+                                <span>Multi-channel deployment</span>
+                            </div>
+                        </div>
+                        <button class="btn view-details-btn" data-project="chatbots">View Details</button>
+                    </div>
+                    <div class="project-image">
+                        <div class="chatbot-demo">
+                            <div class="chat-window">
+                                <div class="chat-header">
+                                    <div class="chat-avatar">
+                                        <i class="fas fa-robot"></i>
+                                    </div>
+                                    <div class="chat-title">
+                                        <h4>AssistBot</h4>
+                                        <span>Online</span>
+                                    </div>
+                                </div>
+                                <div class="chat-messages">
+                                    <div class="message bot">
+                                        <p>Hello! I see you're returning. How can I help with your project today?</p>
+                                    </div>
+                                    <div class="message user">
+                                        <p>I need help with the integration we discussed last week.</p>
+                                    </div>
+                                    <div class="message bot">
+                                        <p>Of course! I remember we were working on the API integration for your e-commerce platform. Would you like to continue where we left off?</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEO Improvement -->
+                <div class="project-card reverse" data-aos="fade-up">
+                    <div class="project-image">
+                        <div class="stats-container">
+                            <div class="stat">
+                                <h4>SEO Traffic Improvement</h4>
+                                <div class="chart-container">
+                                    <canvas id="seoChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span>SEO</span>
+                            <span>Traffic Optimization</span>
+                            <span>Conversion</span>
+                        </div>
+                        <h3>SEO Performance Transformation</h3>
+                        <p>Improved the SEO of low-ranking websites, significantly increasing traffic and boosting customer acquisition by 67% through strategic optimization techniques.</p>
+                        <div class="project-highlights">
+                            <div class="highlight">
+                                <i class="fas fa-search"></i>
+                                <span>Keyword optimization</span>
+                            </div>
+                            <div class="highlight">
+                                <i class="fas fa-code"></i>
+                                <span>Technical SEO</span>
+                            </div>
+                            <div class="highlight">
+                                <i class="fas fa-link"></i>
+                                <span>Backlink strategy</span>
+                            </div>
+                        </div>
+                        <button class="btn view-details-btn" data-project="seo">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Business Automation -->
+                <div class="project-card" data-aos="fade-up">
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span>Automation</span>
+                            <span>Business Process</span>
+                            <span>Efficiency</span>
+                        </div>
+                        <h3>Business Process Automation</h3>
+                        <p>Created automation solutions that help businesses manage customer support, social media presence, and generate invoices in real-time, eliminating manual processes and increasing efficiency by 35%.</p>
+                        <div class="project-highlights">
+                            <div class="highlight">
+                                <i class="fas fa-headset"></i>
+                                <span>Support automation</span>
+                            </div>
+                            <div class="highlight">
+                                <i class="fas fa-share-alt"></i>
+                                <span>Social media management</span>
+                            </div>
+                            <div class="highlight">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                                <span>Automated invoicing</span>
+                            </div>
+                        </div>
+                        <button class="btn view-details-btn" data-project="automation">View Details</button>
+                    </div>
+                    <div class="project-image">
+                        <div class="image-container">
+                            <div class="workflow-diagram">
+                                <div class="workflow-node">
+                                    <i class="fas fa-user"></i>
+                                    <span>Client Request</span>
+                                </div>
+                                <div class="workflow-arrow">→</div>
+                                <div class="workflow-node">
+                                    <i class="fas fa-robot"></i>
+                                    <span>Auto Processing</span>
+                                </div>
+                                <div class="workflow-arrow">→</div>
+                                <div class="workflow-node">
+                                    <i class="fas fa-file-invoice"></i>
+                                    <span>Invoice Generation</span>
+                                </div>
+                                <div class="workflow-arrow">→</div>
+                                <div class="workflow-node">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Client Delivery</span>
+                                </div>
+                            </div>
+                            <p class="efficiency-indicator">35% Efficiency Increase</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <div class="section-header">
+                <h2>Key <span class="gradient-text">Achievements</span></h2>
+                <p>Measurable results and impactful outcomes</p>
+            </div>
+            <div class="achievements-container">
+                <div class="achievement-card" data-aos="zoom-in" data-aos-duration="800">
+                    <div class="achievement-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="counter" data-target="67">0</h3>
+                    <h4>%</h4>
+                    <p>Increase in Customer Acquisition through SEO Optimization</p>
+                </div>
+                <div class="achievement-card" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="800">
+                    <div class="achievement-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3 class="counter" data-target="35">0</h3>
+                    <h4>%</h4>
+                    <p>Efficiency Improvement through Business Process Automation</p>
+                </div>
+                <div class="achievement-card" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="800">
+                    <div class="achievement-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="counter" data-target="45">0</h3>
+                    <h4>+</h4>
+                    <p>Successful Client Projects Delivered</p>
+                </div>
+                <div class="achievement-card" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="800">
+                    <div class="achievement-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="counter" data-target="15">0</h3>
+                    <h4>+</h4>
+                    <p>Custom AI Solutions Implemented</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get In <span class="gradient-text">Touch</span></h2>
+                <p>Let's discuss how I can help transform your business</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-form-container" data-aos="fade-right" data-aos-duration="1000">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                            <div class="focus-border"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                            <div class="focus-border"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                            <div class="focus-border"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <div class="focus-border"></div>
+                        </div>
+                        <button type="submit" class="btn primary-btn submit-btn">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                <div class="info-details">
+                    <h3>Location</h3>
+                    <p>United States</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="info-details">
+                    <h3>Email</h3>
+                    <p>the.ai.entrepreneur.ai.hub@gmail.com</p>
+                </div>
+            </div>
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="info-details">
+                            <h3>Phone</h3>
+                            <p>+13505035033</p>
+                        </div>
+                    </div>
+                    <div class="social-links" data-aos="fade-up" data-aos-delay="200">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/the-ai-entrepreneur-ai-hub" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://x.com/ai_in_it" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://medium.com/@the.ai.entrepreneur.ai.hub" class="social-link" target="_blank"><i class="fab fa-medium"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Details Modal -->
+    <div class="modal" id="project-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <!-- Content will be injected dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="footer-logo-container">
+                        <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+                            <defs>
+                                <linearGradient id="footer-logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#7B2CBF" />
+                                    <stop offset="100%" stop-color="#3A86FF" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="20" cy="20" r="18" fill="none" stroke="url(#footer-logo-gradient)" stroke-width="2.5"/>
+                            <path d="M13,28 L28,12" stroke="url(#footer-logo-gradient)" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M13,12 L28,28" stroke="url(#footer-logo-gradient)" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="20" cy="20" r="5" fill="url(#footer-logo-gradient)"/>
+                        </svg>
+                        <span>George K.</span>
+                    </div>
+                    <p>Automation & AI Expert</p>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#achievements">Achievements</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 George K. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Fix for iOS devices to properly handle vh units (viewport height)
+        function setVhProperty() {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+        
+        window.addEventListener('resize', setVhProperty);
+        window.addEventListener('orientationchange', setVhProperty);
+        setVhProperty();

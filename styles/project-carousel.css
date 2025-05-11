@@ -1,0 +1,169 @@
+/* Project Carousel Styles */
+
+/* Container for the entire carousel */
+.projects-carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0;
+}
+
+/* The carousel track that holds all projects */
+.projects-carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    gap: 30px;
+    padding: 20px 0;
+}
+
+/* Individual project card in the carousel */
+.carousel-project-card {
+    flex: 0 0 90%;
+    max-width: 90%;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--border-color);
+    padding: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Hover effect for project cards */
+.carousel-project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    border-color: var(--accent-purple);
+}
+
+/* Project content section */
+.carousel-project-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Project image section */
+.carousel-project-image {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Navigation buttons */
+.carousel-nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.carousel-nav-button:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-prev {
+    left: 20px;
+}
+
+.carousel-next {
+    right: 20px;
+}
+
+/* Pagination indicators */
+.carousel-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+    transform: scale(1.2);
+}
+
+/* Responsive adjustments */
+@media (min-width: 992px) {
+    .carousel-project-card {
+        flex: 0 0 45%;
+        max-width: 45%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .carousel-project-card {
+        flex: 0 0 30%;
+        max-width: 30%;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-project-card {
+        flex: 0 0 85%;
+        max-width: 85%;
+        padding: 20px;
+    }
+    
+    .carousel-nav-button {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .carousel-prev {
+        left: 10px;
+    }
+    
+    .carousel-next {
+        right: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-project-card {
+        flex: 0 0 80%;
+        max-width: 80%;
+        padding: 15px;
+    }
+    
+    .carousel-nav-button {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .carousel-prev {
+        left: 5px;
+    }
+    
+    .carousel-next {
+        right: 5px;
+    }
+}

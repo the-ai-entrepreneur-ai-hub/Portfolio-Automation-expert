@@ -10,25 +10,10 @@
 
 /* The carousel track that holds all projects */
 .projects-carousel-track {
- display: flex;
- overflow-x: scroll; /* Enable horizontal scrolling */
- scroll-snap-type: x mandatory; /* Snap to project cards */
- -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
- transition: transform 0.5s ease;
+    display: flex;
+    transition: transform 0.5s ease;
     gap: 30px;
     padding: 20px 0;
- animation: slideInRight 1s ease-out forwards; /* Apply animation */
-}
-
-/* Hide scrollbar for a cleaner look */
-.projects-carousel-track::-webkit-scrollbar {
- display: none;
-}
-
-.projects-carousel-track {
- -ms-overflow-style: none; /* IE and Edge */
- scrollbar-width: none; /* Firefox */
- overflow-x: auto; /* Ensure scrolling is enabled */
 }
 
 /* Individual project card in the carousel */
@@ -41,7 +26,6 @@
     padding: 25px;
     transition: all 0.3s ease;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
- scroll-snap-align: start; /* Snap to the start of the card */
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -125,18 +109,6 @@
     transform: scale(1.2);
 }
 
-/* Keyframes for right-to-left animation */
-@keyframes slideInRight {
-    0% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
 /* Responsive adjustments */
 @media (min-width: 992px) {
     .carousel-project-card {
@@ -155,7 +127,7 @@
 @media (max-width: 768px) {
     .carousel-project-card {
         flex: 0 0 85%;
-        max-width: 85%; /* Adjusted for better fit on smaller screens */
+        max-width: 85%;
         padding: 20px;
     }
     
@@ -177,7 +149,7 @@
 @media (max-width: 576px) {
     .carousel-project-card {
         flex: 0 0 80%;
-        max-width: 80%; /* Adjusted for even smaller screens */
+        max-width: 80%;
         padding: 15px;
     }
     

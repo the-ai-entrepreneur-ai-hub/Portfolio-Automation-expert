@@ -496,21 +496,14 @@ header {
 
 /* Projects Section */
 .projects {
- background-color: var(--bg-primary);
+    background-color: var(--bg-primary);
     position: relative;
-    overflow-x: hidden; /* Hide the horizontal scrollbar by default */
 }
 
 .projects-container {
     display: flex;
-    overflow-x: auto; /* Enable horizontal scrolling */
-    scroll-behavior: smooth;
-    padding-bottom: 1.5rem; /* Add some padding for the scrollbar */
-    gap: 3rem; /* Adjust gap for horizontal layout */
-    /* Hide scrollbar for Chrome, Safari and Opera */
-    &::-webkit-scrollbar {
-        display: none;
-    }
+    flex-direction: column;
+    gap: 7rem;
 }
 
 .project-card {
@@ -524,8 +517,6 @@ header {
     border-radius: var(--border-radius-md);
     border: 1px solid var(--border-color);
     transition: var(--transition-medium);
-    min-width: 80%; /* Give project cards a minimum width */
-    animation: slideInRight 1s ease-out forwards; /* Apply animation */
 }
 
 .project-card:hover {
@@ -537,11 +528,10 @@ header {
 .project-card.reverse {
     grid-template-columns: 1fr 1fr;
     direction: rtl;
-    background-color: var(--card-bg); /* Keep background */
-    border-radius: var(--border-radius-md); /* Keep border radius */
-    border: 1px solid var(--border-color); /* Keep border */
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--border-color);
     transition: var(--transition-medium);
-    animation: slideInRight 1s ease-out forwards; /* Apply animation */
 }
 
 .project-card.reverse:hover {
@@ -881,10 +871,6 @@ header {
 }
 
 /* Achievements Section */
-/* Services Section (assuming similar structure to Projects for horizontal layout) */
-.services {
-    overflow-x: hidden; /* Hide the horizontal scrollbar by default */
-}
 .achievements {
     background-color: var(--bg-secondary);
     position: relative;
@@ -906,13 +892,6 @@ header {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 2rem;
     position: relative;
-/* Services Container */
-.services .container > div { /* Assuming services items are direct children of a div within the container */
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding-bottom: 1.5rem; /* Add padding for scrollbar */
-    gap: 2rem; /* Adjust gap for horizontal layout */
     z-index: 2;
 }
 
@@ -1836,18 +1815,6 @@ footer::before {
 
     .partner-logo i {
         font-size: 1.5rem;
-    }
-}
-
-/* Animation Keyframes for horizontal slide */
-@keyframes slideInRight {
-    0% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
     }
 }
 

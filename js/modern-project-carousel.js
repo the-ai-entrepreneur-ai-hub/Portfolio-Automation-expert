@@ -111,12 +111,32 @@ function initModernProjectCarousel() {
                 modernCard.appendChild(header);
 
                 // 2. Content with description and highlights
+                // Create scroll wrapper
+                const scrollWrapper = document.createElement('div');
+                scrollWrapper.className = 'modern-project-scroll-wrapper';
+
+                // Create scrollable content container
+                const scrollableContent = document.createElement('div');
+                scrollableContent.className = 'modern-project-scrollable';
+
+                // Create custom scrollbar
+                const scrollbar = document.createElement('div');
+                scrollbar.className = 'modern-project-scrollbar';
+
+                const scrollThumb = document.createElement('div');
+                scrollThumb.className = 'modern-project-scrollbar-thumb';
+                scrollbar.appendChild(scrollThumb);
+
+                // Create content
                 const modernContent = document.createElement('div');
                 modernContent.className = 'modern-project-content';
 
                 const descriptionElement = document.createElement('p');
                 descriptionElement.className = 'modern-project-description';
                 descriptionElement.textContent = description;
+                // Remove line clamp to show full description
+                descriptionElement.style.webkitLineClamp = 'unset';
+                descriptionElement.style.display = 'block';
                 modernContent.appendChild(descriptionElement);
 
                 // Add highlights
@@ -155,20 +175,22 @@ function initModernProjectCarousel() {
                     featuresElement.appendChild(demoIcon);
                 }
 
-                // Add team role icon if role is specified
-                if (roleText.includes('Lead') || roleText.includes('Developer')) {
-                    const roleIcon = document.createElement('div');
-                    roleIcon.className = 'modern-feature-icon';
-                    roleIcon.title = roleText.trim();
-                    roleIcon.innerHTML = '<i class="fas fa-users"></i>';
-                    featuresElement.appendChild(roleIcon);
-                }
-
                 if (featuresElement.children.length > 0) {
                     modernContent.appendChild(featuresElement);
                 }
 
-                modernCard.appendChild(modernContent);
+                // Add content to scrollable container
+                scrollableContent.appendChild(modernContent);
+
+                // Add scrollable container and scrollbar to wrapper
+                scrollWrapper.appendChild(scrollableContent);
+                scrollWrapper.appendChild(scrollbar);
+
+                // Add scroll wrapper to card
+                modernCard.appendChild(scrollWrapper);
+
+                // Initialize custom scrollbar
+                initCustomScrollbar(scrollableContent, scrollThumb);
 
                 // 3. Footer with CTA button
                 const footer = document.createElement('div');
@@ -382,6 +404,73 @@ function closeProjectModal() {
     if (modal) {
         modal.classList.remove('active');
         document.body.style.overflow = ''; // Restore scrolling
+    }
+}
+
+// Initialize custom scrollbar functionality
+function initCustomScrollbar(scrollableElement, thumbElement) {
+    if (!scrollableElement || !thumbElement) return;
+
+    // Set initial thumb height based on content
+    updateThumbSize();
+
+    // Update thumb position on scroll
+    scrollableElement.addEventListener('scroll', updateThumbPosition);
+
+    // Update thumb size on window resize
+    window.addEventListener('resize', updateThumbSize);
+
+    // Make thumb draggable
+    let isDragging = false;
+    let startY = 0;
+    let startScrollTop = 0;
+
+    thumbElement.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        startY = e.clientY;
+        startScrollTop = scrollableElement.scrollTop;
+        document.body.style.userSelect = 'none'; // Prevent text selection during drag
+
+        // Add event listeners for drag
+        document.addEventListener('mousemove', handleDrag);
+        document.addEventListener('mouseup', stopDrag);
+    });
+
+    function handleDrag(e) {
+        if (!isDragging) return;
+
+        const deltaY = e.clientY - startY;
+        const scrollRatio = scrollableElement.scrollHeight / scrollableElement.clientHeight;
+        scrollableElement.scrollTop = startScrollTop + (deltaY * scrollRatio);
+    }
+
+    function stopDrag() {
+        isDragging = false;
+        document.body.style.userSelect = '';
+        document.removeEventListener('mousemove', handleDrag);
+        document.removeEventListener('mouseup', stopDrag);
+    }
+
+    function updateThumbSize() {
+        const scrollRatio = scrollableElement.clientHeight / scrollableElement.scrollHeight;
+        const thumbHeight = Math.max(30, scrollRatio * scrollableElement.clientHeight); // Minimum thumb height of 30px
+        thumbElement.style.height = thumbHeight + 'px';
+
+        // Hide scrollbar if content fits without scrolling
+        const parentElement = thumbElement.parentElement;
+        if (scrollRatio >= 1) {
+            parentElement.style.display = 'none';
+        } else {
+            parentElement.style.display = 'block';
+            updateThumbPosition();
+        }
+    }
+
+    function updateThumbPosition() {
+        const scrollRatio = scrollableElement.scrollTop / (scrollableElement.scrollHeight - scrollableElement.clientHeight);
+        const maxTop = scrollableElement.clientHeight - thumbElement.offsetHeight;
+        const thumbTop = scrollRatio * maxTop;
+        thumbElement.style.top = thumbTop + 'px';
     }
 }
 

@@ -51,15 +51,10 @@
 
 /* Project Cards Landscape Fixes */
 .projects-container {
-    display: flex;
-    flex-direction: row;
-    overflow-x: hidden; /* Hide overflow initially */
-    scroll-behavior: smooth;
-    padding: 20px 0;
-    gap: 30px;
-    scrollbar-width: none; /* Hide scrollbar for Firefox */
     position: relative;
     width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
 }
 
 /* Project cards wrapper for animation */
@@ -68,23 +63,22 @@
     flex-wrap: nowrap;
     width: 100%;
     transition: transform 0.5s ease;
-    padding: 0 20px;
 }
 
+/* Show exactly two projects at a time */
 .project-card {
-    flex: 0 0 calc(50% - 15px); /* Show two cards at once with gap */
-    max-width: calc(50% - 15px);
-    margin-right: 30px;
+    flex: 0 0 50%;
+    width: 50%;
+    height: 450px;
     display: flex;
     flex-direction: row;
-    gap: 20px;
-    height: 400px; /* Fixed height for landscape shape */
-    border-radius: 12px;
-    overflow: hidden;
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
+    border-radius: 12px;
+    margin: 0 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
 }
 
 .project-card:hover {
@@ -93,27 +87,39 @@
     border-color: var(--accent-purple);
 }
 
+/* Ensure consistent layout for all cards */
+.project-card,
 .project-card.reverse {
-    flex-direction: row-reverse;
+    flex-direction: row;
 }
 
-.project-card .project-content,
-.project-card .project-image {
+/* Content and image sections */
+.project-card .project-content {
     width: 50%;
-    flex: 1;
+    padding: 25px;
     display: flex;
     flex-direction: column;
-    overflow: auto;
-    padding: 20px;
+    overflow-y: auto;
+    max-height: 100%;
 }
 
 .project-card .project-image {
+    width: 50%;
     padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
+    background-color: var(--bg-secondary);
 }
 
+/* Fix for reverse cards to maintain horizontal layout */
 .project-card.reverse .project-content {
-    direction: ltr;
+    order: 2;
+}
+
+.project-card.reverse .project-image {
+    order: 1;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -264,39 +270,52 @@
 }
 
 /* Responsive Adjustments */
+@media (max-width: 1400px) {
+    .project-card {
+        height: 500px;
+    }
+}
+
 @media (max-width: 1200px) {
     .project-card {
-        flex: 0 0 calc(50% - 15px);
-        max-width: calc(50% - 15px);
-        height: 450px;
+        height: 550px;
+    }
+
+    .projects-wrapper {
+        width: 200%; /* Show exactly 2 cards at 50% each */
     }
 }
 
 @media (max-width: 992px) {
     .project-card {
-        flex: 0 0 calc(80% - 15px);
-        max-width: calc(80% - 15px);
-        height: 400px;
+        flex: 0 0 100%;
+        width: 100%;
+        height: 500px;
     }
 
     .projects-wrapper {
-        padding: 0 10px;
+        width: 400%; /* Each card takes 100% width */
     }
 }
 
 @media (max-width: 768px) {
     .project-card,
     .project-card.reverse {
-        flex-direction: column;
-        flex: 0 0 calc(90% - 15px);
-        max-width: calc(90% - 15px);
         height: auto;
-        min-height: 500px;
+        min-height: 600px;
+        flex-direction: column;
     }
 
     .project-card .project-content,
-    .project-card .project-image {
+    .project-card .project-image,
+    .project-card.reverse .project-content,
+    .project-card.reverse .project-image {
         width: 100%;
+        order: unset;
+    }
+
+    .project-card .project-image {
+        min-height: 250px;
     }
 
     .hero-content {
@@ -307,6 +326,10 @@
         width: 50px;
         height: 50px;
         font-size: 1rem;
+    }
+
+    .projects-wrapper {
+        width: 800%; /* Each card takes full width on mobile */
     }
 }
 

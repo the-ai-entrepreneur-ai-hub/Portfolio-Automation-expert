@@ -80,6 +80,9 @@ function setupHorizontalProjects() {
 
         // Add wrapper to container
         projectsContainer.appendChild(wrapper);
+
+        // Calculate wrapper width based on number of cards
+        updateWrapperWidth();
     }
 
     // Add navigation buttons for horizontal scrolling
@@ -115,7 +118,10 @@ function setupHorizontalProjects() {
         // Create pagination dots
         const projectsWrapper = document.querySelector('.projects-wrapper');
         const projectCards = projectsWrapper.querySelectorAll('.project-card');
-        const totalSlides = Math.ceil(projectCards.length / 2); // Two cards per slide
+
+        // Calculate how many slides we need based on viewport width
+        let cardsPerView = getCardsPerView();
+        const totalSlides = Math.ceil(projectCards.length / cardsPerView);
 
         const paginationContainer = document.createElement('div');
         paginationContainer.className = 'project-pagination';
@@ -158,13 +164,39 @@ function setupHorizontalProjects() {
             }
         });
 
+        // Function to get number of cards per view based on screen size
+        function getCardsPerView() {
+            if (window.innerWidth < 992) {
+                return 1; // Show 1 card on smaller screens
+            }
+            return 2; // Show 2 cards on larger screens
+        }
+
+        // Function to update wrapper width based on number of cards
+        function updateWrapperWidth() {
+            const projectsWrapper = document.querySelector('.projects-wrapper');
+            const projectCards = projectsWrapper.querySelectorAll('.project-card');
+            const cardsPerView = getCardsPerView();
+
+            // Set width based on number of cards and cards per view
+            const wrapperWidth = (projectCards.length / cardsPerView) * 100;
+            projectsWrapper.style.width = `${wrapperWidth}%`;
+
+            // Update card widths
+            const cardWidth = 100 / projectCards.length;
+            projectCards.forEach(card => {
+                card.style.width = `${cardWidth}%`;
+                card.style.flex = `0 0 ${cardWidth}%`;
+            });
+        }
+
         // Function to scroll to a specific slide
         function scrollToSlide(index) {
             const projectsWrapper = document.querySelector('.projects-wrapper');
-            const cardWidth = projectsContainer.offsetWidth;
-            const scrollAmount = index * cardWidth;
+            const cardsPerView = getCardsPerView();
+            const slidePercentage = (100 / (projectCards.length / cardsPerView)) * index;
 
-            projectsWrapper.style.transform = `translateX(-${scrollAmount}px)`;
+            projectsWrapper.style.transform = `translateX(-${slidePercentage}%)`;
             currentSlide = index;
 
             // Update button states
@@ -180,7 +212,9 @@ function setupHorizontalProjects() {
         function updateActiveDot(index) {
             const dots = document.querySelectorAll('.pagination-dot');
             dots.forEach(dot => dot.classList.remove('active'));
-            dots[index].classList.add('active');
+            if (dots[index]) {
+                dots[index].classList.add('active');
+            }
         }
 
         // Initialize
@@ -189,6 +223,37 @@ function setupHorizontalProjects() {
 
         // Handle window resize
         window.addEventListener('resize', function() {
+            // Update wrapper width on resize
+            updateWrapperWidth();
+
+            // Recalculate pagination
+            const newCardsPerView = getCardsPerView();
+            if (cardsPerView !== newCardsPerView) {
+                cardsPerView = newCardsPerView;
+
+                // Update pagination dots
+                const newTotalSlides = Math.ceil(projectCards.length / cardsPerView);
+
+                // Clear existing dots
+                paginationContainer.innerHTML = '';
+
+                // Create new dots
+                for (let i = 0; i < newTotalSlides; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'pagination-dot';
+                    if (i === 0) dot.classList.add('active');
+                    dot.setAttribute('data-index', i);
+                    paginationContainer.appendChild(dot);
+
+                    // Add click event to dot
+                    dot.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        scrollToSlide(index);
+                        updateActiveDot(index);
+                    });
+                }
+            }
+
             // Reset to first slide on resize
             scrollToSlide(0);
             updateActiveDot(0);

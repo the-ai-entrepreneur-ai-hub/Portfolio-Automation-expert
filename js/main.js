@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCharts();
     initProjectModals();
     initContactForm();
+    initVideoHover();
     initPartnersAnimation();
     
     // Set header background on scroll
@@ -697,6 +698,22 @@ function initProjectModals() {
             }
         });
     }
+}
+
+// Autoplay videos on hover in the projects section
+function initVideoHover() {
+    const projectVideos = document.querySelectorAll('.project-item video');
+
+    projectVideos.forEach(video => {
+        video.addEventListener('mouseenter', () => {
+            video.play();
+        });
+
+        video.addEventListener('mouseleave', () => {
+            video.pause();
+            video.currentTime = 0; // Reset to the beginning
+        });
+    });
 }
 
 // Contact form functionality with EmailJS

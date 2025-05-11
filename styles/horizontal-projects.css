@@ -54,41 +54,77 @@
 /* Project card styling */
 .horizontal-project-card {
     background-color: var(--card-bg);
-    border-radius: var(--border-radius-md);
+    border-radius: var(--border-radius-lg);
     border: 1px solid var(--border-color);
-    padding: 25px;
+    padding: 30px;
     height: 100%;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.horizontal-project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-gradient-start), var(--accent-gradient-end));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+    z-index: 1;
+}
+
+.horizontal-project-card:hover::before {
+    transform: scaleX(1);
 }
 
 .horizontal-project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
     border-color: var(--accent-purple);
+    background-color: var(--card-bg-hover);
 }
 
 /* Project content */
 .horizontal-project-content {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 2;
 }
 
 .horizontal-project-content h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
+    font-size: 1.6rem;
+    margin-bottom: 18px;
     color: var(--text-primary);
+    line-height: 1.3;
+    font-weight: 700;
 }
 
 .horizontal-project-content p {
     color: var(--text-secondary);
-    margin-bottom: 15px;
+    margin-bottom: 18px;
+    line-height: 1.6;
+    font-size: 1.05rem;
 }
 
 /* Project image */
 .horizontal-project-image {
     margin-top: auto;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.4s ease;
+    overflow: hidden;
+    border-radius: var(--border-radius-md);
+}
+
+.horizontal-project-card:hover .horizontal-project-image {
+    transform: scale(1.02);
 }
 
 /* Scroll indicators */
@@ -96,9 +132,9 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, var(--accent-gradient-start), var(--accent-gradient-end));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -108,31 +144,58 @@
     cursor: pointer;
     z-index: 10;
     opacity: 0.8;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .scroll-indicator:hover {
     opacity: 1;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-indicator:active {
+    transform: translateY(-50%) scale(0.95);
 }
 
 .scroll-left {
-    left: 10px;
+    left: 15px;
 }
 
 .scroll-right {
-    right: 10px;
+    right: 15px;
 }
 
 /* Responsive adjustments */
 @media (min-width: 768px) {
     .project-wrapper {
         width: 45%;
+        max-width: 550px;
     }
 }
 
 @media (min-width: 1200px) {
     .project-wrapper {
         width: 30%;
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .scroll-indicator {
+        width: 45px;
+        height: 45px;
+    }
+
+    .horizontal-project-card {
+        padding: 25px;
+    }
+
+    .horizontal-project-content h3 {
+        font-size: 1.4rem;
+    }
+
+    .horizontal-project-content p {
+        font-size: 1rem;
     }
 }
 
@@ -140,14 +203,52 @@
     .project-wrapper {
         width: 85%;
     }
-    
+
+    .horizontal-project-card {
+        padding: 20px;
+    }
+
+    .scroll-indicator {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .horizontal-project-card:hover {
+        transform: translateY(-5px);
+    }
+}
+
+@media (max-width: 480px) {
+    .project-wrapper {
+        width: 90%;
+    }
+
     .horizontal-project-card {
         padding: 15px;
     }
-    
+
     .scroll-indicator {
-        width: 30px;
-        height: 30px;
-        font-size: 1rem;
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+
+    .scroll-left {
+        left: 10px;
+    }
+
+    .scroll-right {
+        right: 10px;
+    }
+
+    .horizontal-project-content h3 {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+    }
+
+    .horizontal-project-content p {
+        margin-bottom: 12px;
+        font-size: 0.95rem;
     }
 }

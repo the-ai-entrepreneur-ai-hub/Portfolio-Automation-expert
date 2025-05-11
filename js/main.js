@@ -10,7 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
     initProjectModals();
     initContactForm();
     initPartnersAnimation();
-    
+
+    // Initialize the modern project carousel
+    if (typeof initModernProjectCarousel === 'function') {
+        initModernProjectCarousel();
+    }
+
     // Set header background on scroll
     window.addEventListener('scroll', () => {
         const header = document.querySelector('header');
@@ -29,14 +34,14 @@ function initNavigation() {
     // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
-    
+
     if (hamburger) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
     }
-    
+
     // Close mobile menu when clicking a link
     const navItems = document.querySelectorAll('.nav-links a');
     navItems.forEach(item => {
@@ -45,12 +50,12 @@ function initNavigation() {
             navLinks.classList.remove('active');
         });
     });
-    
+
 // Set active link based on scroll position
     window.addEventListener('scroll', () => {
         const sections = document.querySelectorAll('section');
         let current = '';
-        
+
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
@@ -58,7 +63,7 @@ function initNavigation() {
                 current = section.getAttribute('id');
             }
         });
-        
+
         navItems.forEach(item => {
             item.classList.remove('active');
             if (item.getAttribute('href') === `#${current}`) {
@@ -83,10 +88,10 @@ function initTypingEffect() {
     let charIndex = 0;
     let isDeleting = false;
     let typeSpeed = 100;
-    
+
     function type() {
         const currentText = texts[index];
-        
+
         if (isDeleting) {
             typeText.textContent = currentText.substring(0, charIndex - 1);
             charIndex--;
@@ -96,7 +101,7 @@ function initTypingEffect() {
             charIndex++;
             typeSpeed = 100;
         }
-        
+
         if (!isDeleting && charIndex === currentText.length) {
             isDeleting = true;
             typeSpeed = 1500; // Pause before deleting
@@ -105,10 +110,10 @@ function initTypingEffect() {
             index = (index + 1) % texts.length;
             typeSpeed = 500; // Pause before typing next text
         }
-        
+
         setTimeout(type, typeSpeed);
     }
-    
+
     setTimeout(type, 1000);
 }
 
@@ -210,7 +215,7 @@ function initPartnersAnimation() {
         } else {
             partnersTrack.style.animationDuration = '30s';
         }
-        
+
         // Update animation duration on resize
         window.addEventListener('resize', () => {
             if (window.innerWidth < 768) {
@@ -226,23 +231,23 @@ function initPartnersAnimation() {
 function initCustomCursor() {
     const cursor = document.querySelector('.cursor-dot');
     const cursorOutline = document.querySelector('.cursor-outline');
-    
+
     if (cursor && cursorOutline) {
         document.addEventListener('mousemove', (e) => {
             cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
             cursorOutline.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
         });
-        
+
         document.addEventListener('mousedown', () => {
             cursor.style.transform = 'scale(0.7)';
             cursorOutline.style.transform = 'scale(1.2)';
         });
-        
+
         document.addEventListener('mouseup', () => {
             cursor.style.transform = 'scale(1)';
             cursorOutline.style.transform = 'scale(1)';
         });
-        
+
         // Add hover effect to links and buttons
         const hoverElements = document.querySelectorAll('a, button, .btn');
         hoverElements.forEach(element => {
@@ -251,7 +256,7 @@ function initCustomCursor() {
                 cursorOutline.style.transform = 'scale(1.5)';
                 cursorOutline.style.borderColor = 'var(--accent-purple)';
             });
-            
+
             element.addEventListener('mouseleave', () => {
                 cursor.style.transform = 'scale(1)';
                 cursorOutline.style.transform = 'scale(1)';
@@ -271,17 +276,17 @@ function initScrollAnimations() {
             rect.bottom >= 0
         );
     }
-    
+
     // Get all elements with data-aos attribute
     const elements = document.querySelectorAll('[data-aos]');
-    
+
     // Initial check on page load
     elements.forEach(element => {
         if (isInViewport(element)) {
             element.classList.add('aos-animate');
         }
     });
-    
+
     // Check again on scroll
     window.addEventListener('scroll', () => {
         elements.forEach(element => {
@@ -290,7 +295,7 @@ function initScrollAnimations() {
             }
         });
     });
-    
+
     // Progress bars animation
     const skillCards = document.querySelectorAll('.skill-card');
     skillCards.forEach(card => {
@@ -308,7 +313,7 @@ function initScrollAnimations() {
 // Animated counters
 function initCounters() {
     const counters = document.querySelectorAll('.counter');
-    
+
     function isInViewport(element) {
         const rect = element.getBoundingClientRect();
         return (
@@ -316,13 +321,13 @@ function initCounters() {
             rect.bottom >= 0
         );
     }
-    
+
     function animateCounter(counter) {
         const target = parseInt(counter.getAttribute('data-target'));
         let count = 0;
         const duration = 2000; // 2 seconds
         const increment = target / (duration / 16); // 60 fps
-        
+
         function updateCount() {
             count += increment;
             if (count < target) {
@@ -332,10 +337,10 @@ function initCounters() {
                 counter.textContent = target;
             }
         }
-        
+
         updateCount();
     }
-    
+
     function checkCounters() {
         counters.forEach(counter => {
             if (isInViewport(counter) && !counter.classList.contains('counted')) {
@@ -344,7 +349,7 @@ function initCounters() {
             }
         });
     }
-    
+
     window.addEventListener('scroll', checkCounters);
     checkCounters(); // Check on page load
 }
@@ -408,7 +413,7 @@ function initCharts() {
             }
         });
     }
-    
+
     // SEO improvement chart
     const seoChart = document.getElementById('seoChart');
     if (seoChart) {
@@ -471,7 +476,7 @@ function initProjectModals() {
     const modalBody = modal ? modal.querySelector('.modal-body') : null;
     const closeModal = modal ? modal.querySelector('.close-modal') : null;
     const detailButtons = document.querySelectorAll('.view-details-btn');
-    
+
     if (modal && modalBody && closeModal) {
         // Project details content
         const projectDetails = {
@@ -479,10 +484,10 @@ function initProjectModals() {
                 title: 'AI Content Generation Application',
                 description: `
                     <p>Developed a sophisticated content generation and optimization application that uses advanced AI systems to create highly tailored social media content optimized for each platform.</p>
-                    
+
                     <h4>Challenge</h4>
                     <p>Businesses struggled to create consistent, engaging content across multiple social media platforms, each with different audience preferences and technical requirements.</p>
-                    
+
                     <h4>Solution</h4>
                     <p>Created a comprehensive AI-powered content generation system that:</p>
                     <ul>
@@ -491,7 +496,7 @@ function initProjectModals() {
                         <li>Automatically adjusts tone, length, and format based on target audience</li>
                         <li>Provides performance tracking and iterative improvement</li>
                     </ul>
-                    
+
                     <h4>Technologies Used</h4>
                     <div class="tech-tags">
                         <span>Python</span>
@@ -501,7 +506,7 @@ function initProjectModals() {
                         <span>Node.js</span>
                         <span>MongoDB</span>
                     </div>
-                    
+
                     <h4>Outcomes</h4>
                     <ul>
                         <li>45% increase in social media engagement</li>
@@ -515,10 +520,10 @@ function initProjectModals() {
                 title: 'Intelligent Lead Generation System',
                 description: `
                     <p>Built a comprehensive lead generation and qualification system that captures potential customer information and guides them through an intelligent nurturing process to conversion.</p>
-                    
+
                     <h4>Challenge</h4>
                     <p>The client was generating significant website traffic but struggled with low conversion rates and inefficient lead qualification processes.</p>
-                    
+
                     <h4>Solution</h4>
                     <p>Implemented a multi-faceted lead generation and nurturing system that:</p>
                     <ul>
@@ -527,7 +532,7 @@ function initProjectModals() {
                         <li>Creates personalized nurturing pathways based on user behavior and interests</li>
                         <li>Seamlessly integrates with existing CRM systems</li>
                     </ul>
-                    
+
                     <h4>Technologies Used</h4>
                     <div class="tech-tags">
                         <span>JavaScript</span>
@@ -536,7 +541,7 @@ function initProjectModals() {
                         <span>Machine Learning</span>
                         <span>AWS</span>
                     </div>
-                    
+
                     <h4>Outcomes</h4>
                     <ul>
                         <li>58% increase in lead conversion rate</li>
@@ -550,10 +555,10 @@ function initProjectModals() {
                 title: 'Self-Learning Personalized Chatbots',
                 description: `
                     <p>Developed custom chatbot solutions with advanced contextual memory and self-learning capabilities that adapt to user interactions over time.</p>
-                    
+
                     <h4>Challenge</h4>
                     <p>Traditional chatbots provided limited value due to their inability to maintain context, learn from interactions, or genuinely personalize responses beyond simple rule-based systems.</p>
-                    
+
                     <h4>Solution</h4>
                     <p>Created an innovative chatbot platform featuring:</p>
                     <ul>
@@ -562,7 +567,7 @@ function initProjectModals() {
                         <li>Context-awareness across multiple conversation sessions</li>
                         <li>Multi-channel deployment capabilities (website, messaging apps, voice assistants)</li>
                     </ul>
-                    
+
                     <h4>Technologies Used</h4>
                     <div class="tech-tags">
                         <span>Python</span>
@@ -572,7 +577,7 @@ function initProjectModals() {
                         <span>MongoDB</span>
                         <span>AWS Lambda</span>
                     </div>
-                    
+
                     <h4>Outcomes</h4>
                     <ul>
                         <li>Reduced customer support inquiries by 45%</li>
@@ -586,10 +591,10 @@ function initProjectModals() {
                 title: 'SEO Performance Transformation',
                 description: `
                     <p>Executed comprehensive SEO optimization strategies for low-ranking websites, resulting in substantial traffic improvements and a 67% increase in customer acquisition.</p>
-                    
+
                     <h4>Challenge</h4>
                     <p>Multiple client websites were experiencing poor search visibility, low organic traffic, and minimal conversion despite having quality products and services.</p>
-                    
+
                     <h4>Solution</h4>
                     <p>Implemented a holistic SEO transformation strategy including:</p>
                     <ul>
@@ -599,7 +604,7 @@ function initProjectModals() {
                         <li>Authority-building backlink strategy</li>
                         <li>Local SEO optimization for geographically relevant businesses</li>
                     </ul>
-                    
+
                     <h4>Technologies Used</h4>
                     <div class="tech-tags">
                         <span>SEMrush</span>
@@ -609,7 +614,7 @@ function initProjectModals() {
                         <span>Schema Markup</span>
                         <span>WordPress</span>
                     </div>
-                    
+
                     <h4>Outcomes</h4>
                     <ul>
                         <li>67% increase in customer acquisition through organic search</li>
@@ -623,10 +628,10 @@ function initProjectModals() {
                 title: 'Business Process Automation',
                 description: `
                     <p>Designed and implemented comprehensive automation solutions for business operations, eliminating manual processes and significantly improving operational efficiency.</p>
-                    
+
                     <h4>Challenge</h4>
                     <p>Businesses were struggling with inefficient manual processes for customer support, social media management, and invoice generation, leading to delays, errors, and excessive labor costs.</p>
-                    
+
                     <h4>Solution</h4>
                     <p>Created an integrated automation ecosystem that:</p>
                     <ul>
@@ -635,7 +640,7 @@ function initProjectModals() {
                         <li>Generates and distributes invoices in real-time based on service delivery triggers</li>
                         <li>Provides comprehensive analytics and reporting dashboard</li>
                     </ul>
-                    
+
                     <h4>Technologies Used</h4>
                     <div class="tech-tags">
                         <span>Node.js</span>
@@ -645,7 +650,7 @@ function initProjectModals() {
                         <span>Stripe API</span>
                         <span>Docker</span>
                     </div>
-                    
+
                     <h4>Outcomes</h4>
                     <ul>
                         <li>35% overall increase in operational efficiency</li>
@@ -656,31 +661,31 @@ function initProjectModals() {
                 `
             }
         };
-        
+
         // Open modal on button click
         detailButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const projectId = button.getAttribute('data-project');
                 const project = projectDetails[projectId];
-                
+
                 if (project) {
                     modalBody.innerHTML = `
                         <h2>${project.title}</h2>
                         <div class="project-details">${project.description}</div>
                     `;
-                    
+
                     modal.style.display = 'block';
                     document.body.style.overflow = 'hidden';
                 }
             });
         });
-        
+
         // Close modal
         closeModal.addEventListener('click', () => {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         });
-        
+
         // Close modal when clicking outside
         window.addEventListener('click', (e) => {
             if (e.target === modal) {
@@ -688,7 +693,7 @@ function initProjectModals() {
                 document.body.style.overflow = 'auto';
             }
         });
-        
+
         // Close modal on escape key
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && modal.style.display === 'block') {
@@ -703,35 +708,35 @@ function initProjectModals() {
 function initContactForm() {
     const contactForm = document.getElementById('contact-form');
     const submitBtn = contactForm ? contactForm.querySelector('.submit-btn') : null;
-    
+
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             // Validate form
             const name = contactForm.querySelector('#name').value;
             const email = contactForm.querySelector('#email').value;
             const subject = contactForm.querySelector('#subject').value;
             const message = contactForm.querySelector('#message').value;
-            
+
             if (!name || !email || !subject || !message) {
                 alert('Please fill in all fields');
                 return;
             }
-            
+
             // Email validation regex
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
                 alert('Please enter a valid email address');
                 return;
             }
-            
+
             // Change button text and disable it during sending
             if (submitBtn) {
                 submitBtn.textContent = 'Sending...';
                 submitBtn.disabled = true;
             }
-            
+
             // Prepare EmailJS parameters
             const templateParams = {
                 name: name,
@@ -739,14 +744,14 @@ function initContactForm() {
                 subject: subject,
                 message: message
             };
-            
+
             // Send email using EmailJS
             emailjs.send('service_portfolio', 'template_contact', templateParams, 'user_YOUR_USER_ID')
                 .then((response) => {
                     console.log('Email sent successfully!', response.status, response.text);
                     alert('Thanks for your message! I\'ll get back to you soon.');
                     contactForm.reset();
-                    
+
                     // Reset button
                     if (submitBtn) {
                         submitBtn.textContent = 'Send Message';
@@ -756,7 +761,7 @@ function initContactForm() {
                 .catch((error) => {
                     console.error('Email sending failed:', error);
                     alert('Sorry, there was an error sending your message. Please try again or contact me directly via email.');
-                    
+
                     // Reset button
                     if (submitBtn) {
                         submitBtn.textContent = 'Send Message';
@@ -771,7 +776,7 @@ function initContactForm() {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        
+
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
             window.scrollTo({

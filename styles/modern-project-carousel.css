@@ -1,0 +1,296 @@
+/* Modern Project Carousel Styles */
+
+/* Main container for the carousel */
+.modern-projects-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 40px 0;
+}
+
+/* The track that holds all project cards */
+.modern-carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    gap: 30px;
+    padding: 20px 0;
+}
+
+/* Container for the entire carousel with navigation */
+.modern-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Individual project card in the carousel */
+.modern-project-card {
+    flex: 0 0 calc(50% - 15px);
+    max-width: calc(50% - 15px);
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--border-color);
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 20px;
+    height: 100%;
+}
+
+/* Hover effect for project cards */
+.modern-project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    border-color: var(--accent-purple);
+}
+
+/* Project header with title and tags */
+.modern-project-header {
+    margin-bottom: 15px;
+}
+
+/* Project title styling */
+.modern-project-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+    line-height: 1.3;
+}
+
+/* Container for technology tags */
+.modern-project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+/* Individual technology tag */
+.modern-project-tag {
+    padding: 6px 12px;
+    background: linear-gradient(45deg, rgba(123, 44, 191, 0.1), rgba(58, 134, 255, 0.1));
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent-purple);
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for tags */
+.modern-project-tag:hover {
+    background: linear-gradient(45deg, rgba(123, 44, 191, 0.2), rgba(58, 134, 255, 0.2));
+    transform: translateY(-2px);
+}
+
+/* More tags indicator */
+.modern-project-tag.more-tags {
+    background: linear-gradient(45deg, rgba(123, 44, 191, 0.2), rgba(58, 134, 255, 0.2));
+    cursor: pointer;
+}
+
+/* Project content section */
+.modern-project-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Project description */
+.modern-project-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Project highlights section */
+.modern-project-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Individual highlight item */
+.modern-highlight {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Highlight icon */
+.modern-highlight i {
+    color: var(--accent-purple);
+    font-size: 1rem;
+}
+
+/* Project footer with role and CTA */
+.modern-project-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+/* Project role */
+.modern-project-role {
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+/* Call to action button */
+.modern-project-cta {
+    padding: 10px 20px;
+    background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+    color: white;
+    border-radius: 30px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Hover effect for CTA button */
+.modern-project-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Feature icons container */
+.modern-project-features {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+/* Individual feature icon */
+.modern-feature-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, rgba(123, 44, 191, 0.1), rgba(58, 134, 255, 0.1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-purple);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for feature icons */
+.modern-feature-icon:hover {
+    transform: scale(1.1);
+    background: linear-gradient(45deg, rgba(123, 44, 191, 0.2), rgba(58, 134, 255, 0.2));
+}
+
+/* Navigation buttons */
+.modern-carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    border: none;
+}
+
+/* Hover effect for navigation buttons */
+.modern-carousel-nav:hover {
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Previous button positioning */
+.modern-carousel-prev {
+    left: 20px;
+}
+
+/* Next button positioning */
+.modern-carousel-next {
+    right: 20px;
+}
+
+/* Pagination indicators */
+.modern-carousel-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+/* Individual pagination dot */
+.modern-carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Active pagination dot */
+.modern-carousel-dot.active {
+    background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+    transform: scale(1.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .modern-project-card {
+        flex: 0 0 calc(100% - 30px);
+        max-width: calc(100% - 30px);
+    }
+}
+
+@media (max-width: 768px) {
+    .modern-project-card {
+        padding: 25px;
+    }
+    
+    .modern-project-title {
+        font-size: 1.5rem;
+    }
+    
+    .modern-carousel-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .modern-project-card {
+        padding: 20px;
+    }
+    
+    .modern-project-title {
+        font-size: 1.3rem;
+    }
+    
+    .modern-carousel-nav {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+}

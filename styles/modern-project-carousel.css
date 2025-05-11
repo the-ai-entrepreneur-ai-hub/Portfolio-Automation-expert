@@ -36,7 +36,8 @@
     display: grid;
     grid-template-rows: auto 1fr auto;
     gap: 20px;
-    height: 100%;
+    height: 500px; /* Fixed height for consistency */
+    overflow: hidden; /* Hide overflow content */
 }
 
 /* Hover effect for project cards */
@@ -131,18 +132,12 @@
     font-size: 1rem;
 }
 
-/* Project footer with role and CTA */
+/* Project footer with CTA */
 .modern-project-footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-top: auto;
-}
-
-/* Project role */
-.modern-project-role {
-    font-weight: 500;
-    color: var(--text-secondary);
 }
 
 /* Call to action button */
@@ -267,11 +262,11 @@
     .modern-project-card {
         padding: 25px;
     }
-    
+
     .modern-project-title {
         font-size: 1.5rem;
     }
-    
+
     .modern-carousel-nav {
         width: 40px;
         height: 40px;
@@ -283,14 +278,162 @@
     .modern-project-card {
         padding: 20px;
     }
-    
+
     .modern-project-title {
         font-size: 1.3rem;
     }
-    
+
     .modern-carousel-nav {
         width: 35px;
         height: 35px;
         font-size: 0.9rem;
+    }
+}
+
+/* Modal Styles */
+.modern-project-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modern-project-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modern-modal-content {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-md);
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 30px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.modern-project-modal.active .modern-modal-content {
+    transform: translateY(0);
+}
+
+.modern-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.modern-modal-close:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modern-modal-header {
+    margin-bottom: 20px;
+}
+
+.modern-modal-header h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+}
+
+.modern-modal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.modern-modal-description {
+    margin-bottom: 25px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.modern-modal-highlights {
+    margin-bottom: 25px;
+}
+
+.modern-modal-highlights h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+}
+
+.modern-highlights-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.modern-modal-video {
+    margin-top: 25px;
+}
+
+.modern-modal-video h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+}
+
+.modern-modal-video .video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: var(--border-radius-sm);
+}
+
+.modern-modal-video .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Responsive modal adjustments */
+@media (max-width: 768px) {
+    .modern-modal-content {
+        padding: 20px;
+        width: 95%;
+    }
+
+    .modern-modal-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .modern-highlights-container {
+        grid-template-columns: 1fr;
     }
 }

@@ -1,0 +1,153 @@
+/* Simple Horizontal Projects Layout */
+
+/* Main container for horizontal scrolling */
+.horizontal-projects {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 20px 0;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--accent-purple) var(--bg-secondary); /* Firefox */
+    position: relative;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.horizontal-projects::-webkit-scrollbar {
+    height: 8px;
+}
+
+/* Track */
+.horizontal-projects::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 10px;
+}
+
+/* Handle */
+.horizontal-projects::-webkit-scrollbar-thumb {
+    background: var(--accent-purple);
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.horizontal-projects::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-blue);
+}
+
+/* Project card container */
+.project-wrapper {
+    display: inline-block;
+    vertical-align: top;
+    width: 90%;
+    max-width: 500px;
+    margin-right: 20px;
+    white-space: normal;
+    transition: transform 0.3s ease;
+}
+
+/* Last project card has no right margin */
+.project-wrapper:last-child {
+    margin-right: 0;
+}
+
+/* Project card styling */
+.horizontal-project-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--border-color);
+    padding: 25px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.horizontal-project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    border-color: var(--accent-purple);
+}
+
+/* Project content */
+.horizontal-project-content {
+    margin-bottom: 20px;
+}
+
+.horizontal-project-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+}
+
+.horizontal-project-content p {
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+/* Project image */
+.horizontal-project-image {
+    margin-top: auto;
+}
+
+/* Scroll indicators */
+.scroll-indicator {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-indicator:hover {
+    opacity: 1;
+}
+
+.scroll-left {
+    left: 10px;
+}
+
+.scroll-right {
+    right: 10px;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .project-wrapper {
+        width: 45%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .project-wrapper {
+        width: 30%;
+    }
+}
+
+@media (max-width: 576px) {
+    .project-wrapper {
+        width: 85%;
+    }
+    
+    .horizontal-project-card {
+        padding: 15px;
+    }
+    
+    .scroll-indicator {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+}
